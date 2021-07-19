@@ -21,4 +21,13 @@ function playSound(key) {
   if (!sound) return;
   sound.currentTime = 0;
   sound.play();
+  playAnimation(key)
+}
+
+function playAnimation(key) {
+  const button = document.querySelector(`button[data-key="${key}"]`);
+  button.classList.add("btn-active");
+  button.addEventListener("animationend", () => {
+    button.classList.remove("btn-active");
+  });
 }
